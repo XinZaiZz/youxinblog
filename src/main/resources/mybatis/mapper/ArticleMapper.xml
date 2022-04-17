@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youxin.mapper.ArticleMapper">
+
+    <insert id="saveArticle" parameterType="Article">
+        insert into article(userID, articleContent, articleHtmlContent, articleTabloid, articleTitle, articleType, releaseDate, articleCategories)
+        values (#{userID}, #{articleContent}, #{articleHtmlContent}, #{articleTabloid}, #{articleTitle}, #{articleType}, #{releaseDate}, #{articleCategories})
+    </insert>
+
+    <select id="findAllArticles" resultType="Article">
+        select * from article
+    </select>
+
+    <select id="selArticleById" parameterType="int" resultType="Article">
+        select * from article where id = #{id}
+    </select>
+
+</mapper>

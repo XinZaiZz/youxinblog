@@ -1,0 +1,160 @@
+<!--
+  Created by IntelliJ IDEA.
+  User: youxin
+  Date: 2022/2/9
+  Time: 21:09
+  To change this template use File | Settings | File Templates.
+-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+
+
+<!-- 头部导航栏 -->
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0" th:fragment="topbar">
+    <div class="container-fluid bg-info" >
+        <div class="row clearfix">
+            <div class="col-md-12 column ">
+                <div class="row clearfix">
+                    <div class="col-md-4 column" style="text-align: center">
+                        <div class="page-header">
+                            <h1>
+                                欢迎来到X1nZz的个人博客
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="col-md-6 column">
+                        <ul class="breadcrumb" style="position: relative;top: 40px">
+                            <li>
+                                <a href="#" th:href="@{/toIndex}">主页</a>
+                            </li>
+                            <li>
+                                <a href="#">分类</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/aboutme/show/1}">关于我</a>
+                            </li>
+                            <li class="active">
+                                Data
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2 column" style="position: relative;top: 40px">
+                        <div class="col-md-4" >
+                            <a type="button" class="btn btn-link" th:href="@{/article/toArticleWritePage}">写博客</a>
+                        </div>
+                        <div class="col-md-8" >
+                            <!-- 如果传过来存在没有认证信息 -->
+                            <a type="button" class="btn btn-primary" shiro:notAuthenticated="" th:href="@{/toLogin}">
+                                <span class="glyphicon glyphicon-log-in">登录</span>
+                            </a>
+                            <a type="button" class="btn btn-primary" style="position: relative;left: 20px" shiro:notAuthenticated="">
+                                <span class="glyphicon glyphicon-user">注册</span>
+                            </a>
+
+                            <a type="button" class="btn btn-primary" style="position: relative;left: 5px" shiro:authenticated="" th:href="@{/loginout}">
+                                <span class="glyphicon glyphicon-log-out">登出</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- 左部侧边栏 -->
+<div class="col-md-2 column col-md-offset-1" th:fragment="left_side_bar">
+    <h3>
+        欢迎：<span style="color: green" shiro:notAuthenticated="">游客</span>
+        <span style="color: green" shiro:authenticated="" th:text="${user.getUserName()}"></span>
+    </h3>
+    <img alt="140x140" th:src="@{/img/headphoto.jpg}" class="img-circle" style="position: relative; top: 40px"/>
+    <ul class="text-success" style="position: relative; top: 80px;right: 30px">
+        <li>
+            <u><strong>微信:</strong>:lyx17380782341</u>
+        </li><br>
+        <li>
+            <u><strong>QQ:</strong>:1511980683</u>
+        </li><br>
+        <li>
+            <u><strong>邮箱:</strong>liaoyouxin777@163.com</u>
+        </li><br>
+        <li>
+            <strong>github:</strong><a href="https://github.com/XinZaiZz">https://github.com/XinZaiZz</a>
+        </li><br>
+        <li>
+            <strong>CSDN:</strong><a href="https://blog.csdn.net/m0_46508128?spm=1011.2124.3001.5343">https://blog.csdn.net/m0_46508128?spm=1011.2124.3001.5343</a>
+        </li><br>
+    </ul>
+</div>
+
+<!-- 右部侧边栏 -->
+<div class="col-md-3 column" th:fragment="right_side_bar" style="position: relative; left: 30px">
+    <div class="carousel slide" id="carousel-379050">
+        <ol class="carousel-indicators">
+            <li class="active" data-slide-to="0" data-target="#carousel-379050">
+            </li>
+            <li data-slide-to="1" data-target="#carousel-379050">
+            </li>
+            <li data-slide-to="2" data-target="#carousel-379050">
+            </li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="item active">
+                <img alt="" th:src="@{/img/Rotation_1.jpg}" />
+                <div class="carousel-caption">
+                    <h4>
+                        自律
+                    </h4>
+                    <p>
+                        慧极必伤，情深不寿，强极则辱，谦谦君子，温润如玉。
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img alt="" th:src="@{/img/Rotation_2.jpg}" />
+                <div class="carousel-caption">
+                    <h4>
+                        自强
+                    </h4>
+                    <p>
+                        他强任他强，清风拂山岗；他横任他横，明月照大江。他自狠来他自恶，我自一口真气足。
+                    </p>
+                </div>
+            </div>
+            <div class="item">
+                <img alt="" th:src="@{/img/Rotation_3.jpg}" />
+                <div class="carousel-caption">
+                    <h4>
+                        不息
+                    </h4>
+                    <p>
+                        只要有人的地方就有恩怨，有恩怨就会有江湖，人就是江湖。
+                    </p>
+                </div>
+            </div>
+        </div> <a class="left carousel-control" href="#carousel-379050" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-379050" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div>
+    <div class="jumbotron">
+        <h1>
+            希望
+        </h1>
+        <p>
+            美好都会如期而至，你我皆是黑马。
+        </p>
+        <p>
+            <a class="btn btn-primary btn-large" th:href="@{/aboutme/show/1}">Learn more→</a>
+        </p>
+    </div>
+</div>
+
+
+<!-- 底部导航栏 -->
+<div class="container-fluid" th:fragment="footer_bar">
+    <div class="row clearfix" style="text-align: center">
+        <div class="col-md-12 column">
+            <address> <strong>Twitter, Inc.</strong><br /> CHN<br />PZHU<br /> <abbr title="Phone">P:</abbr> (+86) 17380782341</address>
+        </div>
+    </div>
+</div>
+</html>
